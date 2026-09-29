@@ -1,0 +1,9 @@
+# Netlify build configuration for TanStack Start (Nitro 3, netlify preset)
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Selects Nitro's netlify preset (public output -> dist/, SSR function -> .netlify/functions-internal)
+  NITRO_PRESET = "netlify"
