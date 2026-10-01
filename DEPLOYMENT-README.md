@@ -1,21 +1,22 @@
-# PCOS DECODED — Production Netlify Deployment
+# PCOS DECODED — Production Source
 
-This is the corrected production-ready Lovable/Git source for the PCOS DECODED landing page.
+This source is intended to be deployed to the EXISTING Netlify site `pcosdecoded.netlify.app`.
 
-## Live Selar product URL
-https://globalwomenshealthnetwork.selar.com/pcosdecoded
-
-## Netlify build settings
-- Base directory: project root (the folder containing `package.json`)
+## Netlify build
 - Build command: `bun run build`
 - Publish directory: `dist`
-- Node version: `22`
-- Nitro preset: `netlify`
+- Node: `22`
+- Base directory: repository root (the folder containing `package.json`)
 
-Connect this project to the existing `pcosdecoded.netlify.app` Netlify site. Do not delete the existing production deployment before this version successfully builds and is verified.
+## Selar
+All purchase CTAs point to:
+https://globalwomenshealthnetwork.selar.com/pcosdecoded
 
-## Image fix
-All landing-page image assets used by the source are localized under `public/assets/`. The Lovable-hosted asset URLs have been replaced in the asset metadata with local `/assets/...` paths so the images are served by Netlify.
+## Assets
+Landing-page image binaries are localized under `public/assets/` and the Lovable asset metadata points to those local paths.
 
-## Selar CTA fix
-Purchase-oriented CTA links now point to the live Selar product URL above. The page design and copy are otherwise unchanged.
+## Router
+The project uses TanStack Start. The canonical router entry is `src/router.ts`, with `src/router.tsx` retained as a compatibility re-export. This avoids file-resolution ambiguity during Netlify's build while preserving the existing application architecture.
+
+## Deployment
+Push these files to the GitHub repository connected to the existing Netlify site. Do not create a new Netlify site and do not upload only `public/` or `dist/`.
